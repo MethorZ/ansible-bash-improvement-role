@@ -53,4 +53,3 @@ bash_improve_git: true
 #
 bash_improve_vim: true
 bash_improve_vimrc_file: /etc/vim/vimrc
-
