@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: bash-improvements
   author: MethorZ
   description: Ansible bash improvements
   company: MethorZ
