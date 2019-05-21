@@ -1,0 +1,12 @@
+---
+##
+# Bash improvements: vim
+##
+- name: TEMPLATE | Configure vimrc using template
+  template:
+    src: templates/vimrc.j2
+    dest: "{{ bash_improve_vimrc_file }}"
+    owner: root
+    group: root
+    mode: 0644
+  when: ("vim" in ansible_facts['packages'])

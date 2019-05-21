@@ -1,0 +1,30 @@
+---
+##
+# Bash improvements: dircolors
+##
+- block:
+  - name: COPY | Copy the dircolors file
+    copy:
+      src: "{{ bash_improve_dircolor_src }}"
+      dest: "{{ bash_improve_dircolor_dest }}"
+      owner: root
+      group: root
+      mode: 0644
+
+  - name: BLOCKINFILE | Add dircolors to the global bashrc
+    blockinfile:
+      path: "{{ bash_improve_global_bashrc }}"
+      marker_begin: "Begin"
+      marker_end: "End"
+      marker: "# {mark} ansible: bash improvements"
+      block: |
+        # Directory and file colors for bash
+        eval "`dircolors {{ bash_improve_dircolor_dest }}`"
+        alias dir='dir --color'
+        alias ls='ls --color'
+
+        # Bash improvement with alias
+        alias ll='ls --color -lah'
+        alias l='ls --color -lA'
+    notify: enable user bashrc
+  when: bash_improve_dircolors

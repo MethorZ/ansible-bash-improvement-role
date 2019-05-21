@@ -1,0 +1,7 @@
+---
+# Enables the global bashrc, removing the users local .bashrc
+- name: enable user bashrc
+  file:
+    state: absent
+    path: "{{ item }}/.bashrc"
+  with_items: "{{ bash_improve_home_dirs }}"

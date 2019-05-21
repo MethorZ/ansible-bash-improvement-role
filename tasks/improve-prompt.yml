@@ -1,0 +1,22 @@
+---
+##
+# Bash improvements: prompt
+##
+- name: BLOCKINFILE | Add red improved PS1 for root user
+  blockinfile:
+    path: "{{ bash_improve_root_bashrc }}"
+    marker_begin: "Begin"
+    marker_end: "End"
+    marker: "# {mark} ansible: PS1 improvement with git support for root"
+    block: |
+      {{ bash_improve_root_prompt_code }}
+
+- name: BLOCKINFILE | Add green improved PS1 as default for all users
+  blockinfile:
+    path: "{{ bash_improve_global_bashrc }}"
+    marker_begin: "Begin"
+    marker_end: "End"
+    marker: "# {mark} ansible: PS1 improvements with git support for users"
+    block: |
+      {{ bash_improve_user_prompt_code }}
+  notify: enable user bashrc

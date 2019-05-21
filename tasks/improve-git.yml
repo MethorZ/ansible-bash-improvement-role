@@ -1,0 +1,20 @@
+---
+##
+# Bash improvements: git
+##
+- name: BLOCKINFILE | Enable the git improvements for the bash
+  blockinfile:
+    path: "{{ bash_improve_global_bashrc }}"
+    marker_begin: "Begin"
+    marker_end: "End"
+    marker: "# {mark} ansible: git improvements"
+    block: |
+      git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --date-order"
+      git config --global alias.lgt "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --topo-order"
+      git config --global alias.st "status"
+      git config --global alias.ci "commit"
+      git config --global alias.fa "fetch --all -pv"
+      git config --global alias.fam "pull --all -pv"
+      git config --global push.default current
+  when: ("git" in ansible_facts['packages'])
+  notify: enable user bashrc

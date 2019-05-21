@@ -1,0 +1,40 @@
+---
+##
+# Bash improvements
+##
+- name: PACKAGE_FACTS | Gather package facts for system
+  package_facts:
+    manager: auto
+
+#
+# Import variable definitions and defaults
+#
+- name: IMPORT_TASKS | Setup Variable definitions / defaults
+  import_tasks: setup-variables.yml
+
+#
+# Add improvements
+#
+- name: IMPORT_TASKS | Improve bash completion
+  import_tasks: improve-bash-completion.yml
+  when: bash_improve_completion
+
+- name: IMPORT_TASKS | Improve dircolors
+  import_tasks: improve-dir-colors.yml
+  when: bash_improve_dircolors
+
+- name: IMPORT_TASKS | Improve bash history
+  import_tasks: improve-bash-history.yml
+  when: bash_improve_history
+
+- name: IMPORT_TASKS | Improve prompt
+  import_tasks: improve-prompt.yml
+  when: bash_improve_prompt
+
+- name: IMPORT_TASKS | Improve git
+  import_tasks: improve-git.yml
+  when: bash_improve_git
+
+- name: IMPORT_TASKS | Improve vim
+  import_tasks: improve-vim.yml
+  when: bash_improve_vim

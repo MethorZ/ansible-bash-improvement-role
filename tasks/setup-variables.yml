@@ -1,0 +1,29 @@
+---
+#
+# Default OS specific variable definitions / defaultss
+#
+- name: INCLUDE_VARS | OS specific vars
+  include_vars: "{{ ansible_facts['os_family'] }}.yml"
+
+- name: FIND | Find existing users
+  find:
+    paths: /home
+    recurse: no
+    file_type: directory
+    excludes: "{{ bash_improve_skip_users }}"
+  register: existing_home_dirs
+
+- name: FACTS - Define global users bashrc file
+  set_fact:
+    bash_improve_global_bashrc: "{{ __bash_improve_global_bashrc }}"
+  when: bash_improve_global_bashrc is not defined
+
+- name: FACTS - Define root bashrc file
+  set_fact:
+    bash_improve_root_bashrc: "{{ __bash_improve_root_bashrc }}"
+  when: bash_improve_root_bashrc is not defined
+
+- name: FACTS - Define list of existing users to apply bashrc changes
+  set_fact:
+    bash_improve_home_dirs: "{{ bash_improve_home_dirs }} + [ '{{ item.path }}' ]"
+  with_items: "{{ existing_home_dirs.files }}"
