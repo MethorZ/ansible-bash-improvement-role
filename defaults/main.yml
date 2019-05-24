@@ -1,5 +1,10 @@
 ---
 #
+# Enable bash improvements
+#
+bash_improve_enabled: false
+
+#
 # Enables bash completion for interactive shells
 #
 bash_improve_completion: true
