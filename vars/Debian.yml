@@ -2,3 +2,4 @@
 # Path to the bashrc files
 __bash_improve_global_bashrc: /etc/bash.bashrc
 __bash_improve_root_bashrc: /root/.bashrc
+__bash_improve_bash_completion_package: bash-completion

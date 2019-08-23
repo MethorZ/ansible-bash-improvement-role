@@ -2,6 +2,12 @@
 ##
 # Bash improvements: bash completion
 ##
+- name: APT | Add bash completion package
+  apt:
+    name: "{{ bash_improve_bash_completion_package }}"
+    state: present
+  when: bash_improve_completion
+
 - name: BLOCKINFILE | Enable bash completion for interactive shells
   blockinfile:
     path: "{{ bash_improve_global_bashrc }}"

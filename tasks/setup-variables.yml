@@ -23,6 +23,11 @@
     bash_improve_root_bashrc: "{{ __bash_improve_root_bashrc }}"
   when: bash_improve_root_bashrc is not defined
 
+- name: FACTS - Define bash completion package
+  set_fact:
+    bash_improve_bash_completion_package: "{{ __bash_improve_bash_completion_package }}"
+  when: bash_improve_bash_completion_package is not defined
+
 - name: FACTS - Define list of existing users to apply bashrc changes
   set_fact:
     bash_improve_home_dirs: "{{ bash_improve_home_dirs }} + [ '{{ item.path }}' ]"
