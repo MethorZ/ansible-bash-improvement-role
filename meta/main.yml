@@ -1,7 +1,7 @@
 galaxy_info:
-  role_name: bash-improvements
+  role_name: methorz.bash-improvements
   author: MethorZ
-  description: Ansible bash improvements
+  description: Ansible bash improvements for Debian
   company: MethorZ
   license: license (BSD, MIT)
   min_ansible_version: 2.5
